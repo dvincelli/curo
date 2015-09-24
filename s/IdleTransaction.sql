@@ -3,5 +3,5 @@ SELECT now()-query_start as query_running_for,ps.*,
              pl.relation::regclass, pl.mode, pl.granted  
      FROM pg_stat_activity ps
                LEFT JOIN pg_locks pl ON pl.pid=ps.pid
-       WHERE ps.query = '<IDLE> in transaction' 
+       WHERE ps.state = 'idle in transaction'
         ORDER  BY ps.query_start LIMIT 1;

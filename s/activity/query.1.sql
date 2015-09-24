@@ -27,7 +27,7 @@ SELECT
 FROM
     pg_stat_activity
 WHERE
-    query <> '<IDLE>'
+    state <> 'idle'
     AND pid <> pg_backend_pid()
     AND datname = current_database()
 ORDER BY
